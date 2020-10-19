@@ -8,7 +8,7 @@
     @endif
 
     {{-- Sidebar menu --}}
-    {{dd($adminlte)}}
+    
     <div class="sidebar">
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column {{ config('adminlte.classes_sidebar_nav', '') }}"
