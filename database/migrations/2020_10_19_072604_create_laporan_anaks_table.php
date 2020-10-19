@@ -18,6 +18,7 @@ class CreateLaporanAnaksTable extends Migration
             $table->bigInteger('id_anak')->unsigned()->nullable()->default(12);
             $table->string('jenis_laporan', 100)->nullable()->comment();
             $table->string('deskripsi', 180)->nullable()->comment();
+            $table->dateTime('tanggal_laporan')->nullable()->default(new DateTime());
 
             $table->timestamps();
         });
