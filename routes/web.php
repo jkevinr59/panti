@@ -36,5 +36,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/{id}/{id_laporan}/edit', 'LaporanController@edit')->name('edit');
         Route::put('/{id}/{id_laporan}/update', 'LaporanController@update')->name('update');
     });
-    
+    Route::group(['prefix' => 'proposal','as'=>'proposal.'], function () {
+        Route::get('/', 'ProposalController@index')->name('index');
+        Route::post('{id}/verify','ProposalController@verify')->name('verify');
+        Route::post('{id}/reject','ProposalController@reject')->name('reject');
+    });
 });

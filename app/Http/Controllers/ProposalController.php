@@ -3,42 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\DonaturHasAnak;
 
 class ProposalController extends Controller
 {
-    protected $view = 'laporan.';
-    protected $route = 'laporan.';
+    protected $view = 'proposal.';
+    protected $route = 'proposal.';
 
-    public function index($id)
+    public function index()
     {
-        $data['model']=LaporanAnak::where('id_anak',$id)->get();
-        $data['id']=$id;
+        $data['model']=DonaturHasAnak::orderBy('is_verified')->get();
         return view($this->view.'index',$data);
     }
 
-    public function create($id)
+    public function create()
     {
-        $data['id'] = $id;
-        return view($this->view.'create',$data);
+        return view($this->view.'create');
     }
 
-    public function store($id,Request $request)
+    public function store(Request $request)
     {
-        $model = LaporanAnak::create($request->all());
-        return redirect()->route($this->route.'index',$id);
+        $model = Anak::create($request->all());
+        return redirect()->route($this->route.'index');
     }
 
-    public function edit($id,$id_laporan,Request $request)
+    public function edit($id,Request $request)
     {
-        $data['model'] = LaporanAnak::find($id_laporan);
+        $data['model'] = Anak::find($id);
         return view($this->view.'edit',$data);
     }
 
-    public function update($id,$id_laporan,Request $request)
+    public function update($id,Request $request)
     {
-        $model = LaporanAnak::find($id_laporan);
+        $model = Anak::find($id);
         $model->update($request->all());
-        return redirect()->route($this->route.'index',$id);
+        return redirect()->route($this->route.'index');
     }
 
     public function delete($id,Request $request)

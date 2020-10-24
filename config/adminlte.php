@@ -257,6 +257,12 @@ return [
             'role' => 'superadmin',
         ],
         [
+            'text' => 'Daftar Proposal',
+            'url'  => 'proposal',
+            'icon' => 'fas fa-fw fa-user',
+            'role' => 'superadmin',
+        ],
+        [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',

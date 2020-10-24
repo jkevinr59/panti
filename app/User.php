@@ -41,6 +41,6 @@ class User extends Authenticatable
 
     public function anaks()
     {
-        return $this->belongsToMany('App\Anak', 'donatur_has_aak', 'id', 'id_anak');
+        return $this->belongsToMany('App\Anak', 'donatur_has_anaks', 'id_donatur', 'id_anak');
     }
 }
