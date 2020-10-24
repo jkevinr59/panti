@@ -252,7 +252,7 @@ return [
         ['header' => 'Manajemen Anak'],
         [
             'text' => 'Daftar Anak',
-            'url'  => 'admin/anak',
+            'url'  => 'anak',
             'icon' => 'fas fa-fw fa-user',
             'role' => 'superadmin',
         ],
