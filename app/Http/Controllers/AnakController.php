@@ -45,7 +45,7 @@ class AnakController extends Controller
     public function edit($id,Request $request)
     {
         $data['model'] = Anak::find($id);
-        return view($this->view.'create',$data);
+        return view($this->view.'edit',$data);
     }
 
     public function update($id,Request $request)

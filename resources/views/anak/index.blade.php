@@ -30,6 +30,7 @@
                     <td>{{$row->nik}}</td>
                     <td>
                         <a href="{{route('anak.edit',$row->id)}}" class="btn btn-primary">Edit</a>
+                        <a href="{{route('laporan.index',$row->id)}}" class="btn btn-primary">Laporan</a>
                     </td>
                 </tr>
             @endforeach

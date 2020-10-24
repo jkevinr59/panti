@@ -29,4 +29,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/{id}/edit', 'AnakController@edit')->name('edit');
         Route::put('/{id}/update', 'AnakController@update')->name('update');
     });
+    Route::group(['prefix' => 'laporan','as'=>'laporan.'], function () {
+        Route::get('/{id}', 'LaporanController@index')->name('index');
+        Route::get('/{id}/create', 'LaporanController@create')->name('create');
+        Route::post('/{id}/store', 'LaporanController@store')->name('store');
+        Route::get('/{id}/{id_laporan}/edit', 'LaporanController@edit')->name('edit');
+        Route::put('/{id}/{id_laporan}/update', 'LaporanController@update')->name('update');
+    });
+    
 });
