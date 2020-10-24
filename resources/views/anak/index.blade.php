@@ -15,6 +15,7 @@
                 <td>Nama</td>
                 <td>Usia</td>
                 <td>Jenis Kelamin</td>
+                <td>Sekolah</td>
                 <td>Asal</td>
                 <td>NIK</td>
                 <td>Aksi</td>
@@ -26,6 +27,7 @@
                     <td>{{$row->nama}}</td>
                     <td>{{$row->usia}}</td>
                     <td>{{$row->jenis_kelamin}}</td>
+                    <td>{{$row->sekolah}}</td>
                     <td>{{$row->asal}}</td>
                     <td>{{$row->nik}}</td>
                     <td>
