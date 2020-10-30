@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Auth;
+use App\Role;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -28,17 +29,14 @@ class AuthServiceProvider extends ServiceProvider
 
         //
 
-       
-        Gate::define('menu:superadmin', function ($user) {
-            return $user->hasRole('superadmin');
-        });
-        Gate::define('menu:pengurus', function ($user) {
-            return $user->hasRole('pengurus');
-        });
-        Gate::define('menu:donatur', function ($user) {
-            return $user->hasRole('donatur');
-        });
-        Gate::define('menu:guest', function ($user) {
+
+        $listRole = Role::all()->pluck('name');
+        foreach($listRole as $role){
+            Gate::define('menu:'.$role, function ($user) use($role) {
+                return $user->hasRole($role);
+            });
+        }
+        Gate::define('menu:guest', function ($user)  {
             return !Auth::check();
         });
     }
