@@ -251,32 +251,32 @@ return [
         // ],
         
         [
-            'header' => 'Manajemen Anak',
-            'can' => ['menu:superadmin','menu:superadmin'],
-        ],
-        [
             'text' => 'Daftar Pengguna',
             'url'  => 'user',
             'icon' => 'fas fa-fw fa-user',
             'can' => 'menu:superadmin',
         ],
         [
+            'header' => 'Manajemen Anak',
+            'can' => ['menu:pengurus'],
+        ],
+        [
             'text' => 'Daftar Anak',
             'url'  => 'anak',
             'icon' => 'fas fa-fw fa-user',
-            'can' => ['menu:superadmin','menu:superadmin'],
+            'can' => ['menu:pengurus'],
         ],
         [
             'text' => 'Daftar Proposal',
             'url'  => 'proposal',
             'icon' => 'fas fa-fw fa-book',
-            'can' => ['menu:superadmin','menu:superadmin'],
+            'can' => ['menu:pengurus'],
         ],
         [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
-            'can' => ['menu:superadmin','menu:superadmin','menu:donatur'],
+            'can' => ['menu:superadmin','menu:pengurus','menu:donatur'],
         ],
         [
             'text'    => 'multilevel',
