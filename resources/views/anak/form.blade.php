@@ -29,3 +29,7 @@
     <label for="asal">Asal</label>
     <input type="text" name="asal" id="asal" class="form-control">
 </div>
+<div class="form-group">
+    <label for="foto">Foto</label>
+    <input type="file" name="foto" id="foto" class="form-control">
+</div>

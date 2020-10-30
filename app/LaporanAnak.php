@@ -14,4 +14,8 @@ class LaporanAnak extends Model
     {
         return $this->belongsTo('App\Anak', 'id_anak', 'id');
     }
+    public function file()
+    {
+        return $this->hasOne('App\FilePendukung', 'id', 'file_pendukung_id');
+    }
 }

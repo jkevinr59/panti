@@ -10,7 +10,8 @@
 
     <div class="row">
         <div class="col-12">
-            <a class='btn btn-primary float-right mb-3' href="{{route('anak.create')}}"><i class="fa fa-plus"></i> Tambah Anak</a>
+            <a class='btn btn-primary float-right mb-3' href="{{route('user.create')}}"><i class="fa fa-plus"></i> Tambah Pengguna</a>
+
         </div>
     </div>
     <div class="row">
@@ -18,27 +19,31 @@
             <table class="table" id="dataTables">
                 <thead>
                     <tr>
+                        <td>ID</td>
                         <td>Nama</td>
-                        <td>Usia</td>
-                        <td>Jenis Kelamin</td>
-                        <td>Sekolah</td>
-                        <td>Asal</td>
-                        <td>NIK</td>
+                        <td>Email</td>
+                        <td>Nomor HP</td>
+                        <td>Peran</td>
                         <td>Aksi</td>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($model as $row)
                         <tr>
-                            <td>{{$row->nama}}</td>
-                            <td>{{$row->usia}}</td>
-                            <td>{{$row->jenis_kelamin}}</td>
-                            <td>{{$row->sekolah}}</td>
-                            <td>{{$row->asal}}</td>
-                            <td>{{$row->nik}}</td>
+
+                            <td>{{$row->id}}</td>
+                            <td>{{$row->name}}</td>
+                            <td>{{$row->email}}</td>
+                            <td>{{$row->nomor_hp}}</td>
+                            @if ($row->hasRole('superadmin'))
+                                <td>Super Admin</td>
+                            @elseif ($row->hasRole('pengurus'))
+                                <td>Pengurus</td>
+                            @elseif ($row->hasRole('donatur'))
+                                <td>Donatur</td>
+                            @endif
                             <td>
-                                <a href="{{route('anak.edit',$row->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="{{route('laporan.index',$row->id)}}" class="btn btn-sm btn-primary">Laporan</a>
+                                <a href="{{route('user.edit',$row->id)}}" class="btn btn-sm btn-primary">Edit</a>
                             </td>
                         </tr>
                     @endforeach

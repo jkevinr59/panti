@@ -242,30 +242,41 @@ return [
             'can'  => 'manage-blog',
             
         ],
+        // [
+        //     'text'        => 'pages',
+        //     'url'         => 'admin/pages',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
+        
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'header' => 'Manajemen Anak',
+            'can' => ['menu:superadmin','menu:superadmin'],
         ],
-        ['header' => 'Manajemen Anak'],
+        [
+            'text' => 'Daftar Pengguna',
+            'url'  => 'user',
+            'icon' => 'fas fa-fw fa-user',
+            'can' => 'menu:superadmin',
+        ],
         [
             'text' => 'Daftar Anak',
             'url'  => 'anak',
             'icon' => 'fas fa-fw fa-user',
-            'role' => 'superadmin',
+            'can' => ['menu:superadmin','menu:superadmin'],
         ],
         [
             'text' => 'Daftar Proposal',
             'url'  => 'proposal',
-            'icon' => 'fas fa-fw fa-user',
-            'role' => 'superadmin',
+            'icon' => 'fas fa-fw fa-book',
+            'can' => ['menu:superadmin','menu:superadmin'],
         ],
         [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
+            'can' => ['menu:superadmin','menu:superadmin','menu:donatur'],
         ],
         [
             'text'    => 'multilevel',

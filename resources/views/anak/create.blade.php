@@ -13,7 +13,7 @@
         <div class="card-header">
             Form Create Anak
         </div>
-        <form action="{{route('anak.store')}}" method="post">
+        <form action="{{route('anak.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 @include('anak.form')

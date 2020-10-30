@@ -13,7 +13,7 @@
         <div class="card-header">
             Form Create Laporan
         </div>
-        <form action="{{route('laporan.store',$id)}}" method="post">
+        <form action="{{route('laporan.store',$id)}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <input type="hidden" name="id_anak" value="{{$id}}">

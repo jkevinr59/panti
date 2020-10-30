@@ -9,6 +9,9 @@
 @section('content')
 
     <h3>Selamat datang di panti anugrah</h3>
+    @if (!Auth::check())
+        <a href="{{url('login')}}" class="btn btr-primary">Login di sini</a>
+    @endif
 
 @stop
 

@@ -44,4 +44,18 @@ class ProposalController extends Controller
     {
 
     }
+
+    public function verify($id)
+    {
+        $model = DonaturHasAnak::find($id);
+        $model->update(['is_verified'=>1]);
+        return redirect()->route($this->route.'index');
+    }
+
+    public function reject($id)
+    {
+        $model = DonaturHasAnak::find($id);
+        $model->update(['is_verified'=>2]);
+        return redirect()->route($this->route.'index');
+    }
 }

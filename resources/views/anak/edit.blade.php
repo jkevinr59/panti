@@ -13,7 +13,7 @@
         <div class="card-header">
             Form Edit
         </div>
-        <form action="{{route('anak.update',$model->id)}}" method="post">
+        <form action="{{route('anak.update',$model->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="_method" value='PUT'>
             <div class="card-body">

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\LaporanAnak;
+use App\Traits\UploadTrait;
 
 class LaporanController extends Controller
 {
+    use UploadTrait;
     //
     protected $view = 'laporan.';
     protected $route = 'laporan.';
@@ -26,7 +28,10 @@ class LaporanController extends Controller
 
     public function store($id,Request $request)
     {
-        $model = LaporanAnak::create($request->all());
+        $file = $this->uploadFile($request->file('file'),'laporan');
+        $input = $request->except('_token','_method','file');
+        $input['file_pendukung_id'] = $file->id;
+        $model = LaporanAnak::create($input);
         return redirect()->route($this->route.'index',$id);
     }
 
@@ -38,8 +43,11 @@ class LaporanController extends Controller
 
     public function update($id,$id_laporan,Request $request)
     {
+        $file = $this->uploadFile($request->file('file'),'laporan');
+        $input = $request->except('_token','_method','file');
+        $input['file_pendukung_id'] = $file->id;
         $model = LaporanAnak::find($id_laporan);
-        $model->update($request->all());
+        $model->update($input);
         return redirect()->route($this->route.'index',$id);
     }
 

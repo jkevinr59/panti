@@ -7,7 +7,11 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    {{-- <p>Welcome to this beautiful admin panel.</p> --}}
+    <h3>Selamat datang di panti anugrah</h3>
+    @if (!Auth::check())
+        <a href="{{url('login')}}" class="btn btn-primary">Login di sini</a>
+    @endif
 @stop
 
 @section('css')

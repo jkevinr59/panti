@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Anak;
 use Carbon\Carbon;
+use App\Traits\UploadTrait;
 
 class AnakController extends Controller
 {
+    use UploadTrait;
     //
     protected $view = 'anak.';
     protected $route = 'anak.';
@@ -38,7 +40,10 @@ class AnakController extends Controller
 
     public function store(Request $request)
     {
-        $model = Anak::create($request->all());
+        $file = $this->uploadFile($request->file('foto'),'foto_anak');
+        $input = $request->except('_method','_token','foto');
+        $input['id_foto'] = $file->id;
+        $model = Anak::create($input);
         return redirect()->route($this->route.'index');
     }
 
@@ -50,13 +55,51 @@ class AnakController extends Controller
 
     public function update($id,Request $request)
     {
+        $file = $this->uploadFile($request->file('foto'),'foto_anak');
+        $input = $request->except('_method','_token','foto');
+        $input['id_foto'] = $file->id;
         $model = Anak::find($id);
-        $model->update($request->all());
+        $model->update($input);
         return redirect()->route($this->route.'index');
     }
 
     public function delete($id,Request $request)
     {
 
+    }
+
+    public function show(Request $request)
+    {
+        $query = Anak::query();
+        $filterFlag = 0;
+        if(isset($request->asal)){
+            $query = $query->where('asal',$request->asal);
+            $filterFlag = 1;
+        }
+
+        if(isset($request->umur)){
+            $query = $query->where('tanggal_lahir',$request->asal);
+            $filterFlag = 1;
+        }
+
+        if(isset($request->umur)){
+            $query = $query->where('tanggal_lahir',$request->asal);
+            $filterFlag = 1;
+        }
+        
+        foreach($data['model'] as $key => $row){
+            if($row->tanggal_lahir){
+                $nowTime = Carbon::now();
+                $birthTime = new Carbon($row->tanggal_lahir);
+                $row->usia = $nowTime->diffInYears($birthTime);
+                $data['model'][$key] = $row;
+            }
+            else
+            {
+                $row->usia = '0';
+                $data['model'][$key] = $row;
+            }
+        }
+        return view($this->view.'index',$data);
     }
 }

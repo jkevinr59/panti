@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Auth;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -36,6 +37,9 @@ class AuthServiceProvider extends ServiceProvider
         });
         Gate::define('menu:donatur', function ($user) {
             return $user->hasRole('donatur');
+        });
+        Gate::define('menu:guest', function ($user) {
+            return !Auth::check();
         });
     }
 }

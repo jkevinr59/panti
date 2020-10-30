@@ -18,7 +18,7 @@
             <input type="hidden" name="_method" value='PUT'>
             <div class="card-body">
                 @include('anak.form_edit',$model)
-                <input type="submit" value="Tambahkan" class="btn btn-success">
+                <input type="submit" value="Update" class="btn btn-success">
             </div>
         </form>
 

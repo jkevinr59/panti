@@ -22,6 +22,13 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
+    Route::group(['prefix' => 'user','as'=>'user.'], function () {
+        Route::get('/', 'UserController@index')->name('index');
+        Route::get('/create', 'UserController@create')->name('create');
+        Route::post('/store', 'UserController@store')->name('store');
+        Route::get('/{id}/edit', 'UserController@edit')->name('edit');
+        Route::put('/{id}/update', 'UserController@update')->name('update');
+    });
     Route::group(['prefix' => 'anak','as'=>'anak.'], function () {
         Route::get('/', 'AnakController@index')->name('index');
         Route::get('/create', 'AnakController@create')->name('create');

@@ -14,4 +14,8 @@ class Anak extends Model
     {
         return $this->belongsToMany('App\User', 'donatur_has_anaks', 'id_donatur', 'id_anak');
     }
+    public function foto()
+    {
+        return $this->hasOne('App\FilePendukung', 'id', 'id_foto');
+    }
 }

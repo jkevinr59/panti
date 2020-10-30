@@ -29,3 +29,10 @@
     <label for="asal">Asal</label>
     <input type="text" name="asal" id="asal" class="form-control" value="{{$model->asal}}">
 </div>
+@if ($model->foto);
+    <img src="{{$model->foto->path}}" alt="Foto anak" srcset="" width="120" height="160">
+@endif
+<div class="form-group">
+    <label for="foto">Foto</label>
+    <input type="file" name="foto" id="foto" class="form-control">
+</div>

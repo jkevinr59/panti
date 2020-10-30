@@ -18,3 +18,7 @@
 
     </textarea>
 </div>
+<div class="form-group">
+    <label for="file">File Pendukung (Rapor dsb)</label>
+    <input type="file" name="file" id="file" class="form-control">
+</div>

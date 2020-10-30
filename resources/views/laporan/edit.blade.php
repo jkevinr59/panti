@@ -13,12 +13,12 @@
         <div class="card-header">
             Form Edit
         </div>
-        <form action="{{route('laporan.update',[$model->id_anak,$model->id])}}" method="post">
+        <form action="{{route('laporan.update',[$model->id_anak,$model->id])}}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="_method" value='PUT'>
             <div class="card-body">
                 @include('laporan.form_edit',$model)
-                <input type="submit" value="Tambahkan" class="btn btn-success">
+                <input type="submit" value="Update" class="btn btn-success">
             </div>
         </form>
 
