@@ -28,9 +28,11 @@ class LaporanController extends Controller
 
     public function store($id,Request $request)
     {
-        $file = $this->uploadFile($request->file('file'),'laporan');
         $input = $request->except('_token','_method','file');
-        $input['file_pendukung_id'] = $file->id;
+        if($request->file('file')){
+            $file = $this->uploadFile($request->file('file'),'laporan');
+            $input['file_pendukung_id'] = $file->id;
+        }
         $model = LaporanAnak::create($input);
         return redirect()->route($this->route.'index',$id);
     }
@@ -43,9 +45,11 @@ class LaporanController extends Controller
 
     public function update($id,$id_laporan,Request $request)
     {
-        $file = $this->uploadFile($request->file('file'),'laporan');
         $input = $request->except('_token','_method','file');
-        $input['file_pendukung_id'] = $file->id;
+        if($request->file('file')){
+            $file = $this->uploadFile($request->file('file'),'laporan');
+            $input['file_pendukung_id'] = $file->id;
+        }
         $model = LaporanAnak::find($id_laporan);
         $model->update($input);
         return redirect()->route($this->route.'index',$id);

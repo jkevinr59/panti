@@ -40,9 +40,11 @@ class AnakController extends Controller
 
     public function store(Request $request)
     {
-        $file = $this->uploadFile($request->file('foto'),'foto_anak');
         $input = $request->except('_method','_token','foto');
-        $input['id_foto'] = $file->id;
+        if($request->file('foto')){
+            $file = $this->uploadFile($request->file('foto'),'foto_anak');
+            $input['id_foto'] = $file->id;
+        }
         $model = Anak::create($input);
         return redirect()->route($this->route.'index');
     }
@@ -55,9 +57,11 @@ class AnakController extends Controller
 
     public function update($id,Request $request)
     {
-        $file = $this->uploadFile($request->file('foto'),'foto_anak');
         $input = $request->except('_method','_token','foto');
-        $input['id_foto'] = $file->id;
+        if($request->file('foto')){
+            $file = $this->uploadFile($request->file('foto'),'foto_anak');
+            $input['id_foto'] = $file->id;
+        }
         $model = Anak::find($id);
         $model->update($input);
         return redirect()->route($this->route.'index');
