@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/{id}/edit', 'AnakController@edit')->name('edit');
         Route::put('/{id}/update', 'AnakController@update')->name('update');
         Route::get('/{id}/donate', 'AnakController@donate')->name('donate');
+        Route::get('/my-anak', 'AnakController@myAnak')->name('my_anak');
     });
     Route::group(['prefix' => 'laporan','as'=>'laporan.'], function () {
         Route::get('/{id}/{type}', 'LaporanController@index')->name('index');

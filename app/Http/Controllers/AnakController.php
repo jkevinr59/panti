@@ -124,4 +124,24 @@ class AnakController extends Controller
         ]);
         return redirect()->back();
     }
+
+    public function myAnak()
+    {
+        $user = Auth::user();
+        $data['model'] = $user->anaks()->where('is_verified',1)->get();
+        foreach($data['model'] as $key => $row){
+            if($row->tanggal_lahir){
+                $nowTime = Carbon::now();
+                $birthTime = new Carbon($row->tanggal_lahir);
+                $row->usia = $nowTime->diffInYears($birthTime);
+                $data['model'][$key] = $row;
+            }
+            else
+            {
+                $row->usia = '0';
+                $data['model'][$key] = $row;
+            }
+        }
+        return view($this->view.'my_anak',$data);
+    }
 }

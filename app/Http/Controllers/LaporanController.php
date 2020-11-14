@@ -42,7 +42,7 @@ class LaporanController extends Controller
     public function edit($id,$id_laporan,Request $request)
     {
         $data['model'] = LaporanAnak::find($id_laporan);
-        $data['type'] = $type;
+        $data['type'] = $data['model']->jenis_laporan;
         return view($this->view.'edit',$data);
     }
 

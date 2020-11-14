@@ -263,6 +263,12 @@ return [
             'can' => 'menu:donatur',
         ],
         [
+            'text' => 'Anak Saya',
+            'url'  => 'anak/my-anak',
+            'icon' => 'fas fa-fw fa-user',
+            'can' => 'menu:donatur',
+        ],
+        [
             'text' => 'Daftar Pengguna',
             'url'  => 'user',
             'icon' => 'fas fa-fw fa-user',
