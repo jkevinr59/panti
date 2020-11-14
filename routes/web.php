@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/my-anak', 'AnakController@myAnak')->name('my_anak');
     });
     Route::group(['prefix' => 'laporan','as'=>'laporan.'], function () {
+        Route::get('/{id}/show', 'LaporanController@show')->name('show');
         Route::get('/{id}/{type}', 'LaporanController@index')->name('index');
         Route::get('/{id}/create/{type}', 'LaporanController@create')->name('create');
         Route::post('/{id}/store', 'LaporanController@store')->name('store');

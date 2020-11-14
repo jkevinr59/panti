@@ -22,7 +22,7 @@ class CreateAnaksTable extends Migration
             $table->string('jenis_kelamin', 100)->nullable()->default('text');
             $table->string('sekolah', 100)->nullable()->default('text');
             $table->string('asal', 100)->nullable()->default('text');
-            $table->bigInteger('id_foto')->nullable()->default(12)->unsigned();
+            $table->bigInteger('id_foto')->nullable()->unsigned();
             $table->timestamps();
         });
     }

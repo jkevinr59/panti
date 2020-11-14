@@ -62,4 +62,13 @@ class LaporanController extends Controller
     {
 
     }
+
+    public function show($id,Request $request)
+    {
+        $data['laporan_akademis'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','akademis')->orderBy('created_at','desc')->get();
+        $data['laporan_non_akademis'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','non_akademis')->orderBy('created_at','desc')->get();
+        $data['laporan_raport'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','raport')->orderBy('created_at','desc')->get();
+        $data['id']=$id;
+        return view($this->view.'show',$data);
+    }
 }
