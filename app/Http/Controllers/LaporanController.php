@@ -13,16 +13,18 @@ class LaporanController extends Controller
     protected $view = 'laporan.';
     protected $route = 'laporan.';
 
-    public function index($id)
+    public function index($id,$type)
     {
-        $data['model']=LaporanAnak::where('id_anak',$id)->get();
+        $data['model']=LaporanAnak::where('id_anak',$id)->where('jenis_laporan',$type)->get();
         $data['id']=$id;
+        $data['type']=$type;
         return view($this->view.'index',$data);
     }
 
-    public function create($id)
+    public function create($id,$type)
     {
         $data['id'] = $id;
+        $data['type'] = $type;
         return view($this->view.'create',$data);
     }
 
@@ -34,12 +36,13 @@ class LaporanController extends Controller
             $input['file_pendukung_id'] = $file->id;
         }
         $model = LaporanAnak::create($input);
-        return redirect()->route($this->route.'index',$id);
+        return redirect()->route($this->route.'index',[$id,$request->jenis_laporan]);
     }
 
     public function edit($id,$id_laporan,Request $request)
     {
         $data['model'] = LaporanAnak::find($id_laporan);
+        $data['type'] = $type;
         return view($this->view.'edit',$data);
     }
 
@@ -52,7 +55,7 @@ class LaporanController extends Controller
         }
         $model = LaporanAnak::find($id_laporan);
         $model->update($input);
-        return redirect()->route($this->route.'index',$id);
+        return redirect()->route($this->route.'index',[$id,$request->jenis_laporan]);
     }
 
     public function delete($id,Request $request)

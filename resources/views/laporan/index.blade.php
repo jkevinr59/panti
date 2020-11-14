@@ -3,14 +3,26 @@
 @section('title', 'Panti Asuhan Anugrah')
 
 @section('content_header')
-    <h1>Laporan Anak</h1>
+    @switch($type)
+        @case('akademis')
+        <h1>Laporan Akademis Anak</h1>
+            @break
+        @case('non_akademis')
+        <h1>Laporan Non Akademis Anak</h1>
+            @break
+        @case('raport')
+        <h1>Raport Anak</h1>
+            @break
+        @default
+    @endswitch
 @stop
 
 @section('content')
 
 <div class="row">
     <div class="col-12">
-        <a class='btn btn-primary float-right mb-3' href="{{route('laporan.create',$id)}}"><i class="fa fa-plus"></i> Tambah Laporan</a>
+        <a class='btn btn-primary float-right mb-3' href="{{route('laporan.create',[$id,$type])}}"><i class="fa fa-plus"></i> Tambah Laporan</a>
+        <a class='btn btn-danger float-right mb-3 mr-1' href="{{route('anak.index')}}"><i class="fa fa-arrow-left"></i> Kembali</a>
     </div>
 </div>
 
@@ -20,9 +32,10 @@
             <thead>
                 <tr>
                     <td>Tanggal Laporan</td>
-                    <td>Jenis Laporan</td>
                     <td>Deskripsi</td>
-                    <td>File</td>
+                    @if ($type == 'raport')
+                        <td>File</td>
+                    @endif
                     <td>Aksi</td>
                 </tr>
             </thead>
@@ -30,18 +43,19 @@
                 @foreach($model as $row)
                     <tr>
                         <td>{{date('d-m-Y',strtotime($row->tanggal_laporan))}}</td>
-                        <td>{{($row->jenis_laporan=='akademis')?"Akademis":"Non-Akademis"}}</td>
                         <td>{{$row->deskripsi}}</td>
-                        @if ($row->file)
-                            <td>
-                                <a href="{{$row->file->path}}">Open</a>
-                            </td>
-                        @else
-                            <td>
-                            </td>
+                        @if ($type == 'raport')
+                            @if ($row->file)
+                                <td>
+                                    <a href="{{$row->file->path}}">Open</a>
+                                </td>
+                            @else
+                                <td>
+                                </td>
+                            @endif
                         @endif
                         <td>
-                            <a href="{{route('laporan.edit',[$row->id_anak,$row->id])}}" class="btn btn-primary">Edit</a>
+                            <a href="{{route('laporan.edit',[$row->id_anak,$row->id,$type])}}" class="btn btn-primary">Edit</a>
                             {{-- <a href="#" class="btn btn-primary">Laporan</a> --}}
                         </td>
                     </tr>

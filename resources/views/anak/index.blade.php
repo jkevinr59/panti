@@ -38,7 +38,9 @@
                             <td>{{$row->nik}}</td>
                             <td>
                                 <a href="{{route('anak.edit',$row->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="{{route('laporan.index',$row->id)}}" class="btn btn-sm btn-primary">Laporan</a>
+                                <a href="{{route('laporan.index',['id' => $row->id,'type'=>'akademis'])}}" class="btn btn-sm btn-primary">Akademis</a>
+                                <a href="{{route('laporan.index',['id' => $row->id,'type'=>'non_akademis'])}}" class="btn btn-sm btn-primary">Non Akademis</a>
+                                <a href="{{route('laporan.index',['id' => $row->id,'type'=>'raport'])}}" class="btn btn-sm btn-primary">Raport</a>
                             </td>
                         </tr>
                     @endforeach

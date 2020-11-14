@@ -5,20 +5,14 @@
     <input type="text" name="tanggal_laporan" id="tanggal_laporan" class="form-control">
 </div>
 
-<div class="form-group">
-    <label for="jenis_laporan">Jenis Laporan</label>
-    <select name="jenis_laporan" id="jenis_laporan" class="form-control">
-        <option value="akademis">Akademis</option>
-        <option value="non_akademis">Non Akademis</option>
-    </select>
-</div>
+<input type="hidden" name="jenis_laporan" value="{{$type}}">
 <div class="form-group">
     <label for="deskripsi">Deskripsi</label>
     <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control">
 
     </textarea>
 </div>
-<div class="form-group">
+<div class="form-group" {{($type!="raport")?"style='display: none'":""}}>
     <label for="file">File Pendukung (Rapor dsb)</label>
     <input type="file" name="file" id="file" class="form-control">
 </div>
