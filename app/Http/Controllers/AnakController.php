@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Anak;
+use App\DonaturHasAnak;
 use Carbon\Carbon;
+use Auth;
 use App\Traits\UploadTrait;
 
 class AnakController extends Controller
@@ -32,6 +34,7 @@ class AnakController extends Controller
         }
         return view($this->view.'index',$data);
     }
+
 
     public function create()
     {
@@ -74,7 +77,9 @@ class AnakController extends Controller
 
     public function show(Request $request)
     {
+        $user = Auth::user();
         $query = Anak::query();
+        
         $filterFlag = 0;
         if(isset($request->asal)){
             $query = $query->where('asal',$request->asal);
@@ -90,7 +95,9 @@ class AnakController extends Controller
             $query = $query->where('tanggal_lahir',$request->asal);
             $filterFlag = 1;
         }
-        
+        $idAnakSudahProposal = $user->anaks()->whereIn('is_verified',[0,1])->pluck('anaks.id');
+        $query = $query->whereNotIn('id',$idAnakSudahProposal);
+        $data['model'] = $query->get();
         foreach($data['model'] as $key => $row){
             if($row->tanggal_lahir){
                 $nowTime = Carbon::now();
@@ -104,6 +111,17 @@ class AnakController extends Controller
                 $data['model'][$key] = $row;
             }
         }
-        return view($this->view.'index',$data);
+        return view($this->view.'show',$data);
+    }
+
+    public function donate($id,Request $request)
+    {
+        $anak = Anak::find($id);
+        $newProposal = DonaturHasAnak::create([
+            'id_donatur' => Auth::id(),
+            'id_anak' => $id,
+            'is_verified' => 0,
+        ]);
+        return redirect()->back();
     }
 }

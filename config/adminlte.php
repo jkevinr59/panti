@@ -251,6 +251,18 @@ return [
         // ],
         
         [
+            'text' => 'Daftar Anak',
+            'url'  => 'anak/show',
+            'icon' => 'fas fa-fw fa-user',
+            'can' => 'menu:donatur',
+        ],
+        [
+            'text' => 'Proposal Saya',
+            'url'  => 'proposal/show',
+            'icon' => 'fas fa-fw fa-user',
+            'can' => 'menu:donatur',
+        ],
+        [
             'text' => 'Daftar Pengguna',
             'url'  => 'user',
             'icon' => 'fas fa-fw fa-user',
@@ -274,7 +286,7 @@ return [
         ],
         [
             'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'url'  => 'password/change',
             'icon' => 'fas fa-fw fa-lock',
             'can' => ['menu:superadmin','menu:pengurus','menu:donatur'],
         ],

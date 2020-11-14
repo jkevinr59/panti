@@ -31,10 +31,12 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::group(['prefix' => 'anak','as'=>'anak.'], function () {
         Route::get('/', 'AnakController@index')->name('index');
+        Route::get('/show', 'AnakController@show')->name('show');
         Route::get('/create', 'AnakController@create')->name('create');
         Route::post('/store', 'AnakController@store')->name('store');
         Route::get('/{id}/edit', 'AnakController@edit')->name('edit');
         Route::put('/{id}/update', 'AnakController@update')->name('update');
+        Route::get('/{id}/donate', 'AnakController@donate')->name('donate');
     });
     Route::group(['prefix' => 'laporan','as'=>'laporan.'], function () {
         Route::get('/{id}/{type}', 'LaporanController@index')->name('index');
@@ -45,6 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::group(['prefix' => 'proposal','as'=>'proposal.'], function () {
         Route::get('/', 'ProposalController@index')->name('index');
+        Route::get('/show', 'ProposalController@show')->name('show');
         Route::post('{id}/verify','ProposalController@verify')->name('verify');
         Route::post('{id}/reject','ProposalController@reject')->name('reject');
     });

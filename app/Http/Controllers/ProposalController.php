@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\DonaturHasAnak;
 
 class ProposalController extends Controller
@@ -57,5 +58,12 @@ class ProposalController extends Controller
         $model = DonaturHasAnak::find($id);
         $model->update(['is_verified'=>2]);
         return redirect()->route($this->route.'index');
+    }
+
+    public function show()
+    {
+        $user = Auth::user();
+        $data['model']=DonaturHasAnak::where('id_donatur',$user->id)->orderBy('is_verified')->get();
+        return view($this->view.'show',$data);
     }
 }
