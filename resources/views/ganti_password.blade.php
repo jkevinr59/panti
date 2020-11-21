@@ -9,7 +9,13 @@
 @section('content')
 
     <div class="card ">
-
+        @if (Session::has('error'))
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss='alert' aria-hidden="true">X</button>
+                <h5>Error</h5>
+                {{Session::get('error')}}
+            </div>
+        @endif
         <form action="{{route('update_password')}}" method="post">
             @csrf
             <div class="card-body">
