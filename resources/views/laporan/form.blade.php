@@ -12,7 +12,7 @@
 
     </textarea>
 </div>
-<div class="form-group" {{($type!="lain_lain")?"style='display: none'":""}}>
+<div class="form-group" {{($type!="lain_lain")?"style=display:none;":""}}>
     <label for="file">File Pendukung (Rapor dsb)</label>
     <input type="file" name="file" id="file" class="form-control">
 </div>
