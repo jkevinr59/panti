@@ -51,7 +51,7 @@
 
         {{-- Email field --}}
         <div class="input-group mb-3">
-            <input type="nomor_hp" name="nomor_hp" class="form-control {{ $errors->has('nomor_hp') ? 'is-invalid' : '' }}"
+            <input type="text" name="nomor_hp" class="form-control {{ $errors->has('nomor_hp') ? 'is-invalid' : '' }}"
                    value="{{ old('nomor_hp') }}" placeholder="Nomor HP">
             <div class="input-group-append">
                 <div class="input-group-text">
