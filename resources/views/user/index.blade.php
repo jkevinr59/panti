@@ -3,15 +3,22 @@
 @section('title', 'Panti Asuhan Anugrah')
 
 @section('content_header')
-    <h1>Daftar Anak</h1>
+
+    @role('superadmin')
+    <h1>Daftar Pengguna</h1>
+    @endrole
+    @role('pengurus')
+    <h1>Daftar Donatur</h1>
+    @endrole
 @stop
 
 @section('content')
 
     <div class="row">
         <div class="col-12">
+            @role('superadmin')
             <a class='btn btn-primary float-right mb-3' href="{{route('user.create')}}"><i class="fa fa-plus"></i> Tambah Pengguna</a>
-
+            @endrole
         </div>
     </div>
     <div class="row">

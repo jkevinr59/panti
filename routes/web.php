@@ -16,11 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/ganti_password', 'HomeController@changePassword')->name('change_password');
+    Route::post('/ganti_password', 'HomeController@updatePassword')->name('update_password');
 
     Route::group(['prefix' => 'user','as'=>'user.'], function () {
         Route::get('/', 'UserController@index')->name('index');

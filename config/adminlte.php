@@ -272,7 +272,13 @@ return [
             'text' => 'Daftar Pengguna',
             'url'  => 'user',
             'icon' => 'fas fa-fw fa-user',
-            'can' => 'menu:superadmin',
+            'can' => ['menu:superadmin'],
+        ],
+        [
+            'text' => 'Daftar Donatur',
+            'url'  => 'user',
+            'icon' => 'fas fa-fw fa-user',
+            'can' => ['menu:pengurus'],
         ],
         [
             'header' => 'Manajemen Anak',
@@ -291,8 +297,8 @@ return [
             'can' => ['menu:pengurus'],
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'password/change',
+            'text' => 'Ganti Password',
+            'url'  => 'ganti_password',
             'icon' => 'fas fa-fw fa-lock',
             'can' => ['menu:superadmin','menu:pengurus','menu:donatur'],
         ],

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Role;
 use App\DonaturHasAnak;
 
 class ProposalController extends Controller

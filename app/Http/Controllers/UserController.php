@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
+use App\Role;
 
 class UserController extends Controller
 {
@@ -17,7 +19,20 @@ class UserController extends Controller
     public function index()
     {
         //
-        $data['model'] = User::all();
+        $user = Auth::user();
+        if($user->hasRole('pengurus'))
+        {
+            $donaturRole = Role::where('name','donatur')->first();
+            $data['model'] = $donaturRole->users;
+            
+        }
+        else if($user->hasRole('superadmin'))
+        {
+            $data['model'] = User::all();
+        }
+        if(!$data['model']){
+            $data['model'] = [];
+        }
         return view($this->view.'index',$data);
     }
 
