@@ -93,7 +93,19 @@
                                         <td>{{$row->deskripsi}}</td>
                                         @if ($row->file)
                                             <td>
-                                                <a href="{{$row->file->path}}">Open</a>
+                                                
+                                                @if(in_array($row->file->ekstensi,['jpeg','jpg','png','JPG','JPEG','PNG']))
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <img src="{{$row->file->path}}" alt="Data" width="100px">
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <a href="{{$row->file->path}}" class="btn btn-primary">Unduh</a>
+                                                    </div>
+                                                </div>
                                             </td>
                                         @else
                                             <td>
