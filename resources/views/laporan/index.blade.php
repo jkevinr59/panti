@@ -44,7 +44,7 @@
                     <tr>
                         <td>{{date('d-m-Y',strtotime($row->tanggal_laporan))}}</td>
                         <td>{{$row->deskripsi}}</td>
-                        @if ($type == 'raport')
+                        @if ($type == 'raport'||$type == 'lain_lain')
                             @if ($row->file)
                                 <td>
                                     <a href="{{$row->file->path}}">Open</a>
