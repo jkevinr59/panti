@@ -49,6 +49,22 @@
             @endif
         </div>
 
+        {{-- Email field --}}
+        <div class="input-group mb-3">
+            <input type="nomor_hp" name="nomor_hp" class="form-control {{ $errors->has('nomor_hp') ? 'is-invalid' : '' }}"
+                   value="{{ old('nomor_hp') }}" placeholder="Nomor HP">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-mobile {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+            @if($errors->has('nomor_hp'))
+                <div class="invalid-feedback">
+                    <strong>{{ $errors->first('nomor_hp') }}</strong>
+                </div>
+            @endif
+        </div>
+
         {{-- Password field --}}
         <div class="input-group mb-3">
             <input type="password" name="password"

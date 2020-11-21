@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="name">Nama</label>
-    <input type="text" name="name" id="name" class="form-control" value="{{$model->nama}}">
+    <input type="text" name="name" id="name" class="form-control" value="{{$model->name}}">
 </div>
 
 <div class="form-group">
