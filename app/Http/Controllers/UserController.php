@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use App\Role;
+use Hash;
 
 class UserController extends Controller
 {
@@ -58,6 +59,11 @@ class UserController extends Controller
         //
         $input = $request->except('_method'.'_token','role');
         $model = User::create($input);
+        
+        if($input['password']){
+            $model->password = Hash::make($input['password']);
+            $model->save();
+        }
         if($request->role == 'superadmin'){
             $model->attachRole('superadmin');
         }
@@ -67,7 +73,6 @@ class UserController extends Controller
         else if($request->role == 'donatur'){
             $model->attachRole('donatur');
         }
-            
         return redirect()->route($this->route.'index');
     }
 
@@ -108,7 +113,10 @@ class UserController extends Controller
         $input = $request->except('_method'.'_token','role');
         $model = User::find($id);
         $model->update($input);
-
+        if($input['password']){
+            $model->password = Hash::make($input['password']);
+            $model->save();
+        }
         if($request->role == 'superadmin'){
             $model->syncRoles(['superadmin']);
         }

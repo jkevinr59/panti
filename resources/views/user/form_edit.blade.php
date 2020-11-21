@@ -7,11 +7,12 @@
     <label for="email">Email</label>
     <input type="email" name="email" id="email" class="form-control" value="{{$model->email}}">
 </div>
-<div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" class="form-control" value="{{$model->password}}">
-</div>
-
+@role('superadmin')
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control" value="{{$model->password}}">
+    </div>
+@endrole
 <div class="form-group">
     <label for="nomor_hp">Nomor HP</label>
     <input type="text" name="nomor_hp" id="nomor_hp" class="form-control" value="{{$model->nomor_hp}}">
