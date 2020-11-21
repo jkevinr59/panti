@@ -10,8 +10,8 @@
         @case('non_akademis')
         <h1>Laporan Non Akademis Anak</h1>
             @break
-        @case('raport')
-        <h1>Raport Anak</h1>
+        @case('lain_lain')
+        <h1>Laporan Lain-Lain</h1>
             @break
         @default
     @endswitch
