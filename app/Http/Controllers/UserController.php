@@ -60,7 +60,7 @@ class UserController extends Controller
         $input = $request->except('_method'.'_token','role');
         $model = User::create($input);
         
-        if($input['password']){
+        if(isset($input['password'])){
             $model->password = Hash::make($input['password']);
             $model->save();
         }
@@ -113,7 +113,7 @@ class UserController extends Controller
         $input = $request->except('_method'.'_token','role');
         $model = User::find($id);
         $model->update($input);
-        if($input['password']){
+        if(isset($input['password'])){
             $model->password = Hash::make($input['password']);
             $model->save();
         }
