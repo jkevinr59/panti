@@ -25,7 +25,7 @@
                 <a class='nav-link' data-toggle="tab" href="#laporan_non_akademis">Non Akademis</a>
             </li>
             <li class="nav-item">
-                <a class='nav-link' data-toggle="tab" href="#laporan_raport">Raport</a>
+                <a class='nav-link' data-toggle="tab" href="#laporan_lain_lain">Lain Lain</a>
             </li>
         </ul>
     </div>
@@ -75,10 +75,10 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane" id="laporan_raport">
+            <div class="tab-pane" id="laporan_lain_lain">
                 <div class="row">
                     <div class="col-12">
-                        <table class="table" id="dataTables_raport" width="100%">
+                        <table class="table" id="dataTables_lain_lain" width="100%">
                             <thead>
                                 <tr>
                                     <td>Tanggal Laporan</td>
@@ -87,7 +87,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($laporan_raport as $row)
+                                @foreach($laporan_lain_lain as $row)
                                     <tr>
                                         <td>{{date('d-m-Y',strtotime($row->tanggal_laporan))}}</td>
                                         <td>{{$row->deskripsi}}</td>
@@ -131,7 +131,7 @@
         $(document).ready(function () {
             $('#dataTables_akademis').DataTable();   
             $('#dataTables_non_akademis').DataTable();   
-            $('#dataTables_raport').DataTable();   
+            $('#dataTables_lain_lain').DataTable();   
         });
     </script>
 @stop
