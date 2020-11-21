@@ -37,10 +37,10 @@
                             <td>{{$row->asal}}</td>
                             <td>{{$row->nik}}</td>
                             <td>
-                                <a href="{{route('anak.edit',$row->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="{{route('laporan.index',['id' => $row->id,'type'=>'akademis'])}}" class="btn btn-sm btn-primary">Akademis</a>
-                                <a href="{{route('laporan.index',['id' => $row->id,'type'=>'non_akademis'])}}" class="btn btn-sm btn-primary">Non Akademis</a>
-                                <a href="{{route('laporan.index',['id' => $row->id,'type'=>'lain_lain'])}}" class="btn btn-sm btn-primary">Lain Lain</a>
+                                <a href="{{route('anak.edit',$row->id)}}" class="btn btn-sm mb-1 mt-1 btn-primary">Edit</a>
+                                <a href="{{route('laporan.index',['id' => $row->id,'type'=>'akademis'])}}" class="btn btn-sm mb-1 mt-1 btn-primary">Akademis</a>
+                                <a href="{{route('laporan.index',['id' => $row->id,'type'=>'non_akademis'])}}" class="btn btn-sm mb-1 mt-1 btn-primary">Non Akademis</a>
+                                <a href="{{route('laporan.index',['id' => $row->id,'type'=>'lain_lain'])}}" class="btn btn-sm mb-1 mt-1 btn-primary">Lain Lain</a>
                             </td>
                         </tr>
                     @endforeach
