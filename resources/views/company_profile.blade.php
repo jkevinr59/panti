@@ -21,12 +21,12 @@
 		<script type="text/javascript" src="http://explorercanvas.googlecode.com/svn/trunk/excanvas.js"></script>
 	<![endif]-->
     {{-- <link rel="stylesheet" href="css/bootstrap.min.css" /> --}}
-    <link rel="stylesheet" type="text/css" href="css/isotope.css" media="screen" />
-    <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/da-slider.css" />
+    {{-- <link rel="stylesheet" type="text/css" href="css/isotope.css" media="screen" /> --}}
+    {{-- <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" /> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="css/da-slider.css" /> --}}
     <!-- Owl Carousel Assets -->
-    <link href="js/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css" />
+    {{-- <link href="js/owl-carousel/owl.carousel.css" rel="stylesheet"> --}}
+    {{-- <link rel="stylesheet" href="css/styles.css" /> --}}
     <!-- Font Awesome -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     {{-- <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}"> --}}
@@ -64,7 +64,33 @@
     </header>
     <div class="container">
         <section id="home" class="mt-2">
-            <div class="banner-container" style="text-align: center">
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <div id="carousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img class="d-block w-100" src="{{asset('images/nn.jpg')}}" alt="First slide">
+                          </div>
+                          <div class="carousel-item">
+                            <img class="d-block w-100" src="{{asset('images/kp.jpg')}}" alt="Second slide">
+                          </div>
+                          <div class="carousel-item">
+                            <img class="d-block w-100" src="{{asset('images/a.jpg')}}" alt="Third slide">
+                          </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            {{-- <div class="banner-container" style="text-align: center">
                 <img src="images/nn.jpg" alt="banner" />
                 <div class="container banner-content">
                     <div id="da-slider" class="da-slider">
@@ -73,7 +99,7 @@
     
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </section>
         <section id="introText">
             <div class="container">
@@ -113,11 +139,14 @@
 </body>
 
 
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="vendor/jquery/jquery.js"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
+<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
 
+<script>
+    $('#carousel').carousel();
+</script>
 
