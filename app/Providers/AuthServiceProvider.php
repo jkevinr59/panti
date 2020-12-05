@@ -6,6 +6,8 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Support\Facades\Gate;
 use Auth;
 use App\Role;
+use DB;
+use Schema;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -30,14 +32,16 @@ class AuthServiceProvider extends ServiceProvider
         //
 
 
-        $listRole = Role::all()->pluck('name');
-        foreach($listRole as $role){
-            Gate::define('menu:'.$role, function ($user) use($role) {
-                return $user->hasRole($role);
+        if (Schema::hasTable('roles')) {
+            $listRole = Role::all()->pluck('name');
+            foreach($listRole as $role){
+                Gate::define('menu:'.$role, function ($user) use($role) {
+                    return $user->hasRole($role);
+                });
+            }
+            Gate::define('menu:guest', function ($user)  {
+                return !Auth::check();
             });
         }
-        Gate::define('menu:guest', function ($user)  {
-            return !Auth::check();
-        });
     }
 }
