@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <table class="table responsive" id="dataTables">
+            <table class="table dt-responsive" id="dataTables">
                 <thead>
                     <tr>
                         <td>ID</td>
