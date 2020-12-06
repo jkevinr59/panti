@@ -34,87 +34,93 @@
             <div class="tab-pane active" id="laporan_akademis">
                 <div class="row">
                     <div class="col-12">
-                        <table class="table" id="dataTables_akademis" width="100%">
-                            <thead>
-                                <tr>
-                                    <td>Tanggal Laporan</td>
-                                    <td>Deskripsi</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($laporan_akademis as $row)
+                        <div class="table-responsive">
+                            <table class="table" id="dataTables_akademis" width="100%">
+                                <thead>
                                     <tr>
-                                        <td>{{date('d-m-Y',strtotime($row->tanggal_laporan))}}</td>
-                                        <td>{{$row->deskripsi}}</td>
+                                        <td>Tanggal Laporan</td>
+                                        <td>Deskripsi</td>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach($laporan_akademis as $row)
+                                        <tr>
+                                            <td>{{date('d-m-Y',strtotime($row->tanggal_laporan))}}</td>
+                                            <td>{{$row->deskripsi}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="tab-pane" id="laporan_non_akademis">
                 <div class="row">
                     <div class="col-12">
-                        <table class="table" id="dataTables_non_akademis" width="100%">
-                            <thead>
-                                <tr>
-                                    <td>Tanggal Laporan</td>
-                                    <td>Deskripsi</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($laporan_non_akademis as $row)
+                        <div class="table-responsive">
+                            <table class="table" id="dataTables_non_akademis" width="100%">
+                                <thead>
                                     <tr>
-                                        <td>{{date('d-m-Y',strtotime($row->tanggal_laporan))}}</td>
-                                        <td>{{$row->deskripsi}}</td>
+                                        <td>Tanggal Laporan</td>
+                                        <td>Deskripsi</td>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach($laporan_non_akademis as $row)
+                                        <tr>
+                                            <td>{{date('d-m-Y',strtotime($row->tanggal_laporan))}}</td>
+                                            <td>{{$row->deskripsi}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="tab-pane" id="laporan_lain_lain">
                 <div class="row">
                     <div class="col-12">
-                        <table class="table" id="dataTables_lain_lain" width="100%">
-                            <thead>
-                                <tr>
-                                    <td>Tanggal Laporan</td>
-                                    <td>Deskripsi</td>
-                                    <td>File</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($laporan_lain_lain as $row)
+                        <div class="table-responsive">
+                            <table class="table" id="dataTables_lain_lain" width="100%">
+                                <thead>
                                     <tr>
-                                        <td>{{date('d-m-Y',strtotime($row->tanggal_laporan))}}</td>
-                                        <td>{{$row->deskripsi}}</td>
-                                        @if ($row->file)
-                                            <td>
-                                                
-                                                @if(in_array($row->file->ekstensi,['jpeg','jpg','png','JPG','JPEG','PNG']))
+                                        <td>Tanggal Laporan</td>
+                                        <td>Deskripsi</td>
+                                        <td>File</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($laporan_lain_lain as $row)
+                                        <tr>
+                                            <td>{{date('d-m-Y',strtotime($row->tanggal_laporan))}}</td>
+                                            <td>{{$row->deskripsi}}</td>
+                                            @if ($row->file)
+                                                <td>
+                                                    
+                                                    @if(in_array($row->file->ekstensi,['jpeg','jpg','png','JPG','JPEG','PNG']))
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <img src="{{$row->file->path}}" alt="Data" width="100px">
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                                     <div class="row">
                                                         <div class="col-12">
-                                                            <img src="{{$row->file->path}}" alt="Data" width="100px">
+                                                            <a href="{{$row->file->path}}" class="btn btn-primary">Unduh</a>
                                                         </div>
                                                     </div>
-                                                @endif
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <a href="{{$row->file->path}}" class="btn btn-primary">Unduh</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        @else
-                                            <td>
-                                            </td>
-                                        @endif
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                                </td>
+                                            @else
+                                                <td>
+                                                </td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
