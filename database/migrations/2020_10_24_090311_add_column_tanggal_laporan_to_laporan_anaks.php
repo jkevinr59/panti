@@ -15,7 +15,9 @@ class AddColumnTanggalLaporanToLaporanAnaks extends Migration
     {
         Schema::table('laporan_anaks', function (Blueprint $table) {
             //
-            $table->dateTime('tanggal_laporan')->nullable();
+            if (!Schema::hasColumn('laporan_anaks', 'tanggal_laporan')) {
+                $table->dateTime('tanggal_laporan')->nullable();
+            }
         });
     }
 
