@@ -72,7 +72,9 @@
     <script> console.log('Hi!'); </script>
     <script> 
         $(document).ready(function () {
-            $('#dataTables').DataTable();   
+            $('#dataTables').DataTable({
+                responsive:true
+            });   
         });
     </script>
 @stop
