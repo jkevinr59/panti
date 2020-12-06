@@ -23,39 +23,42 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <table class="table dt-responsive" id="dataTables">
-                <thead>
-                    <tr>
-                        <td>ID</td>
-                        <td>Nama</td>
-                        <td>Email</td>
-                        <td>Nomor HP</td>
-                        <td>Peran</td>
-                        <td>Aksi</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($model as $row)
+            <div class="table-responsive">
+                <table class="table dt-responsive" id="dataTables">
+                    <thead>
                         <tr>
-
-                            <td>{{$row->id}}</td>
-                            <td>{{$row->name}}</td>
-                            <td>{{$row->email}}</td>
-                            <td>{{$row->nomor_hp}}</td>
-                            @if ($row->hasRole('superadmin'))
-                                <td>Super Admin</td>
-                            @elseif ($row->hasRole('pengurus'))
-                                <td>Pengurus</td>
-                            @elseif ($row->hasRole('donatur'))
-                                <td>Donatur</td>
-                            @endif
-                            <td>
-                                <a href="{{route('user.edit',$row->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                            </td>
+                            <td>ID</td>
+                            <td>Nama</td>
+                            <td>Email</td>
+                            <td>Nomor HP</td>
+                            <td>Peran</td>
+                            <td>Aksi</td>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($model as $row)
+                            <tr>
+    
+                                <td>{{$row->id}}</td>
+                                <td>{{$row->name}}</td>
+                                <td>{{$row->email}}</td>
+                                <td>{{$row->nomor_hp}}</td>
+                                @if ($row->hasRole('superadmin'))
+                                    <td>Super Admin</td>
+                                @elseif ($row->hasRole('pengurus'))
+                                    <td>Pengurus</td>
+                                @elseif ($row->hasRole('donatur'))
+                                    <td>Donatur</td>
+                                @endif
+                                <td>
+                                    <a href="{{route('user.edit',$row->id)}}" class="btn btn-sm btn-primary">Edit</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+            </div>
         </div>
     </div>
 
