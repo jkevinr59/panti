@@ -15,37 +15,39 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <table class="table" id="dataTables">
-                <thead>
-                    <tr>
-                        <td>Nama</td>
-                        <td>Usia</td>
-                        <td>Jenis Kelamin</td>
-                        <td>Sekolah</td>
-                        <td>Asal</td>
-                        <td>NIK</td>
-                        <td>Aksi</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($model as $row)
+            <div class="table-responsive">
+                <table class="table" id="dataTables">
+                    <thead>
                         <tr>
-                            <td>{{$row->nama}}</td>
-                            <td>{{$row->usia}}</td>
-                            <td>{{$row->jenis_kelamin}}</td>
-                            <td>{{$row->sekolah}}</td>
-                            <td>{{$row->asal}}</td>
-                            <td>{{$row->nik}}</td>
-                            <td>
-                                <a href="{{route('anak.edit',$row->id)}}" class="btn btn-sm mb-1 mt-1 btn-primary">Edit</a>
-                                <a href="{{route('laporan.index',['id' => $row->id,'type'=>'akademis'])}}" class="btn btn-sm mb-1 mt-1 btn-primary">Akademis</a>
-                                <a href="{{route('laporan.index',['id' => $row->id,'type'=>'non_akademis'])}}" class="btn btn-sm mb-1 mt-1 btn-primary">Non Akademis</a>
-                                <a href="{{route('laporan.index',['id' => $row->id,'type'=>'lain_lain'])}}" class="btn btn-sm mb-1 mt-1 btn-primary">Lain Lain</a>
-                            </td>
+                            <td>Nama</td>
+                            <td>Usia</td>
+                            <td>Jenis Kelamin</td>
+                            <td>Sekolah</td>
+                            <td>Asal</td>
+                            <td>NIK</td>
+                            <td>Aksi</td>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($model as $row)
+                            <tr>
+                                <td>{{$row->nama}}</td>
+                                <td>{{$row->usia}}</td>
+                                <td>{{$row->jenis_kelamin}}</td>
+                                <td>{{$row->sekolah}}</td>
+                                <td>{{$row->asal}}</td>
+                                <td>{{$row->nik}}</td>
+                                <td>
+                                    <a href="{{route('anak.edit',$row->id)}}" class="btn btn-sm mb-1 mt-1 btn-primary">Edit</a>
+                                    <a href="{{route('laporan.index',['id' => $row->id,'type'=>'akademis'])}}" class="btn btn-sm mb-1 mt-1 btn-primary">Akademis</a>
+                                    <a href="{{route('laporan.index',['id' => $row->id,'type'=>'non_akademis'])}}" class="btn btn-sm mb-1 mt-1 btn-primary">Non Akademis</a>
+                                    <a href="{{route('laporan.index',['id' => $row->id,'type'=>'lain_lain'])}}" class="btn btn-sm mb-1 mt-1 btn-primary">Lain Lain</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

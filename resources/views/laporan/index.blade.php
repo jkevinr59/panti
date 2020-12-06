@@ -28,40 +28,42 @@
 
 <div class="row">
     <div class="col-12">
-        <table class="table" id="dataTables">
-            <thead>
-                <tr>
-                    <td>Tanggal Laporan</td>
-                    <td>Deskripsi</td>
-                    @if ($type == 'raport')
-                        <td>File</td>
-                    @endif
-                    <td>Aksi</td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($model as $row)
+        <div class="table-responsive">
+            <table class="table" id="dataTables">
+                <thead>
                     <tr>
-                        <td>{{date('d-m-Y',strtotime($row->tanggal_laporan))}}</td>
-                        <td>{{$row->deskripsi}}</td>
-                        @if ($type == 'raport'||$type == 'lain_lain')
-                            @if ($row->file)
-                                <td>
-                                    <a href="{{$row->file->path}}">Open</a>
-                                </td>
-                            @else
-                                <td>
-                                </td>
-                            @endif
+                        <td>Tanggal Laporan</td>
+                        <td>Deskripsi</td>
+                        @if ($type == 'raport')
+                            <td>File</td>
                         @endif
-                        <td>
-                            <a href="{{route('laporan.edit',[$row->id_anak,$row->id,$type])}}" class="btn btn-primary">Edit</a>
-                            {{-- <a href="#" class="btn btn-primary">Laporan</a> --}}
-                        </td>
+                        <td>Aksi</td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach($model as $row)
+                        <tr>
+                            <td>{{date('d-m-Y',strtotime($row->tanggal_laporan))}}</td>
+                            <td>{{$row->deskripsi}}</td>
+                            @if ($type == 'raport'||$type == 'lain_lain')
+                                @if ($row->file)
+                                    <td>
+                                        <a href="{{$row->file->path}}">Open</a>
+                                    </td>
+                                @else
+                                    <td>
+                                    </td>
+                                @endif
+                            @endif
+                            <td>
+                                <a href="{{route('laporan.edit',[$row->id_anak,$row->id,$type])}}" class="btn btn-primary">Edit</a>
+                                {{-- <a href="#" class="btn btn-primary">Laporan</a> --}}
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

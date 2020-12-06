@@ -11,55 +11,57 @@
     <div class="row">
         <div class="col-12">
 
-            <table class="table" id="dataTables">
-                <thead>
-                    <tr>
-                        <td>Nama Donatur</td>
-                        <td>Email</td>
-                        <td>Nama Anak</td>
-                        <td>Status</td>
-                        <td>Aksi</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($model as $row)
+            <div class="table-responsive">
+                <table class="table" id="dataTables">
+                    <thead>
                         <tr>
-                            <td>{{($row->donatur)?$row->donatur->name:""}}</td>
-                            <td>{{($row->donatur)?$row->donatur->email:""}}</td>
-                            <td>{{($row->anak)?$row->anak->nama:""}}</td>
-                            <td>
-                                @switch($row->is_verified)
-                                    @case(0)
-                                        <span>Belum disetujui</span>    
-                                        @break
-                                    @case(1)
-                                        <span class="text-success">Disetujui</span>
-                                        @break
-                                    @case(2)
-                                        <span class="text-danger">Ditolak</span>
-                                        @break
-                                    @default
-                                        
-                                @endswitch
-                            </td>
-                            <td>
-                                @if ($row->is_verified == 0)
-                                
-                                    <form class="d-inline" action="{{route('proposal.verify',$row->id)}}" method="post">
-                                        @csrf
-                                        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i></button>
-                                    </form>
-                                    <form class="d-inline" action="{{route('proposal.reject',$row->id)}}" method="post">
-                                        @csrf
-                                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> </button>
-                                    </form>
-                                
-                                @endif
-                            </td>
+                            <td>Nama Donatur</td>
+                            <td>Email</td>
+                            <td>Nama Anak</td>
+                            <td>Status</td>
+                            <td>Aksi</td>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($model as $row)
+                            <tr>
+                                <td>{{($row->donatur)?$row->donatur->name:""}}</td>
+                                <td>{{($row->donatur)?$row->donatur->email:""}}</td>
+                                <td>{{($row->anak)?$row->anak->nama:""}}</td>
+                                <td>
+                                    @switch($row->is_verified)
+                                        @case(0)
+                                            <span>Belum disetujui</span>    
+                                            @break
+                                        @case(1)
+                                            <span class="text-success">Disetujui</span>
+                                            @break
+                                        @case(2)
+                                            <span class="text-danger">Ditolak</span>
+                                            @break
+                                        @default
+                                            
+                                    @endswitch
+                                </td>
+                                <td>
+                                    @if ($row->is_verified == 0)
+                                    
+                                        <form class="d-inline" action="{{route('proposal.verify',$row->id)}}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i></button>
+                                        </form>
+                                        <form class="d-inline" action="{{route('proposal.reject',$row->id)}}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> </button>
+                                        </form>
+                                    
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

@@ -12,34 +12,36 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <table class="table" id="dataTables">
-                <thead>
-                    <tr>
-                        <td>Nama</td>
-                        <td>Usia</td>
-                        <td>Jenis Kelamin</td>
-                        <td>Sekolah</td>
-                        <td>Asal</td>
-                        <td>NIK</td>
-                        <td>Aksi</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($model as $row)
+            <div class="table-responsive">
+                <table class="table" id="dataTables">
+                    <thead>
                         <tr>
-                            <td>{{$row->nama}}</td>
-                            <td>{{$row->usia}}</td>
-                            <td>{{$row->jenis_kelamin}}</td>
-                            <td>{{$row->sekolah}}</td>
-                            <td>{{$row->asal}}</td>
-                            <td>{{$row->nik}}</td>
-                            <td>
-                                <a href="{{route('laporan.show',$row->id)}}" class="btn btn-sm btn-primary">Laporan</a>
-                            </td>
+                            <td>Nama</td>
+                            <td>Usia</td>
+                            <td>Jenis Kelamin</td>
+                            <td>Sekolah</td>
+                            <td>Asal</td>
+                            <td>NIK</td>
+                            <td>Aksi</td>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($model as $row)
+                            <tr>
+                                <td>{{$row->nama}}</td>
+                                <td>{{$row->usia}}</td>
+                                <td>{{$row->jenis_kelamin}}</td>
+                                <td>{{$row->sekolah}}</td>
+                                <td>{{$row->asal}}</td>
+                                <td>{{$row->nik}}</td>
+                                <td>
+                                    <a href="{{route('laporan.show',$row->id)}}" class="btn btn-sm btn-primary">Laporan</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
