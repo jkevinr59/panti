@@ -15,14 +15,14 @@
     </div>
     <div class="row">
     @foreach ($model as $item)
-            <div class="col-6">
+            <div class="col-6-md">
                 <div class="card card-success mt-1">
                     <div class="card-header">
                         <h3>{{$item->nama}}</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-8-md">
                                 <div class="row">
                                     <div class="col-6"><h4>Usia</h4></div>
                                     <div class="col-6"><h4>{{$item->usia}} Tahun</h4></div>
@@ -48,7 +48,7 @@
                                     <div class="col-6"><h4>{{$item->tempat_lahir}} , {{date('d-m-Y',strtotime($item->tanggal_lahir))}}</h4></div>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-4-md">
                                 @if ($item->foto)
                                     <img src="{{$item->foto->path}}" alt="Foto" style="width: 100%">
                                 @endif

@@ -15,7 +15,7 @@
     </div>
     <div class="row">
     @foreach ($model as $item)
-            <div class="col-6">
+            <div class="col-6-md">
                 @php
                     $cardStatus = 'card-primary';
                     if($item->is_verified ==1){
