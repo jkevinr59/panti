@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col-12">
                 
-                <nav class="navbar navbar-dark bg-dark navbar-expand-lg" role="navigation" >
+                <nav class="navbar fixed-top navbar-dark bg-dark navbar-expand-lg" role="navigation" >
                     <div class="navbar-header ml-2">
                        
                          <!--/.navbar-header-->
@@ -63,6 +63,7 @@
         <!--/.container-->
     </header>
     <div class="container">
+        <div class="row " style="height: 100px;" ></div>
         <section id="home" class="mt-2">
             <div class="row">
                 <div class="col-8 offset-2">
@@ -111,29 +112,43 @@
     
     
         </section>
-        <center><h1>SEJARAH:<span class=<h1> </B><center>
+        <div class="row">
+            <div class="col-md-6">
+                <center><h3>SEJARAH:</h3><center>
 					
-            <h2>Panti Asuhan Anugerah ini berdiri sejak tahun 2015</p> 
-            <h2>beralamat di Desa Ngaduman RT08/RW02 Kecamatan Mojosongo,Kabupaten Boyolali, Jawa Tengah</p>
-            <h2>yang mendasari berdirinya Panti Asuhan ini adalah karena kecintaan dan kepedulian pendiri terhadap kehidupan anak-anak yang terlantar.</p>
-                    <h2>hal ini yang menjadi awal dari berdiri nya Panti Asuhan Ini</p>
-                <h2>juga karena pengalaman hidupnya, yang membuat Pendiri ingin agar anak-anak asuh dapat kehidupan yang layak</p>
-                serta  membantu mereka mencapai cita-cita mereka.
-                
-            </p>
-        
-		<center><h1>VISI-MISI:<Span Class=</h1></B><center>
-                
-            <h2>Menjadi sarana dan tempat pembinaan bagi anak-anak</p>
-            <h2>dan masyarakat yang memiliki latar belakang kurang mampu,yatim, piatu dan juga yatim piatu</P>
-
-                <center><h1>TUJUAN:<span class=</h1></B><center>
-                    <h2>Membentuk Dan Menumbuh Kembangkan Iman Dan 
-                    Ketakwaan Terhadap Tuhan Yang Maha Esa</P>
-                    <h2>Serta Berperan Secara Aktif Dalam Meningkatkan Kesejahteraan Masyarakat.</p>
-                    <h2>Terutama Bagi Mereka Anak-Anak Penyandang Masalah Kesejahteraan Sosial,</p>
-                    <h2>Sehingga Mereka Mendapatkan Kehidupan Yang Layak.</p>
+                    <p style="font-size: 18">Panti Asuhan Anugerah ini berdiri sejak tahun 2015
+                    beralamat di Desa Ngaduman RT08/RW02 Kecamatan Mojosongo,Kabupaten Boyolali, Jawa Tengah
+                    yang mendasari berdirinya Panti Asuhan ini adalah karena kecintaan dan kepedulian pendiri terhadap kehidupan anak-anak yang terlantar.
+                    hal ini yang menjadi awal dari berdiri nya Panti Asuhan Ini
+                    juga karena pengalaman hidupnya, yang membuat Pendiri ingin agar anak-anak asuh dapat kehidupan yang layak
+                    serta  membantu mereka mencapai cita-cita mereka.    
+                    </p>
             </div>
+            <div class="col-md-6">
+                <center><h3>VISI-MISI: </h3><center>
+                
+                <p style="font-size: 18">Menjadi sarana dan tempat pembinaan bagi anak-anak
+                dan masyarakat yang memiliki latar belakang kurang mampu,yatim, piatu dan juga yatim piatu</p>
+    
+                <center><h3>TUJUAN:</h4><center>
+                <p style="font-size: 18">Membentuk Dan Menumbuh Kembangkan Iman Dan 
+                Ketakwaan Terhadap Tuhan Yang Maha Esa
+                Serta Berperan Secara Aktif Dalam Meningkatkan Kesejahteraan Masyarakat.
+                Terutama Bagi Mereka Anak-Anak Penyandang Masalah Kesejahteraan Sosial,
+                Sehingga Mereka Mendapatkan Kehidupan Yang Layak.</p>
+                    
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-12 mt-3"> 
+                <h3 class="text-center mt-3 mb-3">KONTAK KAMI DI:</h3>
+                <p class="text-center">Email : <a href="#email">emailchrisanmi08@gmail.com</a></p>
+                <p class="text-center">Instagram : <a href="#instagram">@rpa_boyolali</a></p>
+                <p class="text-center">Facebook : <a href="#facebook">RPA anugerah boyolali</a></p>
+            </div>
+        </div>
+        <div class="row" style="height:50px"></div>
     </div>
 
 </body>
