@@ -18,6 +18,10 @@ Route::get('/', function () {
 });
 Auth::routes();
 
+Route::get('/pdf/test', function () {
+    return view('pdf.laporan');
+});
+Route::get('/pdf/test/{id}/download','LaporanController@export');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/ganti_password', 'HomeController@changePassword')->name('change_password');
@@ -42,6 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::group(['prefix' => 'laporan','as'=>'laporan.'], function () {
         Route::get('/{id}/show', 'LaporanController@show')->name('show');
+        Route::get('/{id}/download','LaporanController@export')->name('export');
         Route::get('/{id}/{type}', 'LaporanController@index')->name('index');
         Route::get('/{id}/create/{type}', 'LaporanController@create')->name('create');
         Route::post('/{id}/store', 'LaporanController@store')->name('store');

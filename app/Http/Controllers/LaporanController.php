@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\LaporanAnak;
+use App\Anak;
 use App\Traits\UploadTrait;
+use PDF;
 
 class LaporanController extends Controller
 {
@@ -70,5 +72,16 @@ class LaporanController extends Controller
         $data['laporan_lain_lain'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','lain_lain')->orderBy('created_at','desc')->get();
         $data['id']=$id;
         return view($this->view.'show',$data);
+    }
+
+    public function export($id,Request $request)
+    {
+        $data['laporan_akademis'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','akademis')->orderBy('created_at','desc')->get();
+        $data['laporan_non_akademis'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','non_akademis')->orderBy('created_at','desc')->get();
+        $data['laporan_lain_lain'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','lain_lain')->orderBy('created_at','desc')->get();
+        $data['id']=$id;
+        $data['anak'] = Anak::find($id);
+        $pdf = PDF::loadView('pdf.laporan',$data);
+        return $pdf->download('Laporan '.$data['anak']->nama.'.pdf');
     }
 }

@@ -11,6 +11,7 @@
 <div class="row">
     <div class="col-12">
         
+        <a class='btn btn-info float-right mb-3 mr-1' href="{{route('laporan.export',$id)}}"><i class="fa fa-download"></i> Unduh</a>
         <a class='btn btn-danger float-right mb-3 mr-1' href="{{route('anak.my_anak')}}"><i class="fa fa-arrow-left"></i> Kembali</a>
     </div>
 </div>
