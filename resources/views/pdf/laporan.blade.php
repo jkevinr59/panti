@@ -43,6 +43,13 @@
                 <th>Deskripsi</th>
             </tr>
         </thead>
+        @empty($laporan_akademis)
+            <tbody>
+                <tr>
+                    <td colspan="2">Data Kosong</td>
+                </tr>
+            </tbody>
+        @else
         <tbody>
             @foreach($laporan_akademis as $row)
                 <tr>
