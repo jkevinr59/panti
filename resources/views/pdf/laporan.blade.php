@@ -51,6 +51,7 @@
                 </tr>
             @endforeach
         </tbody>
+        @endempty
     </table>
 
     <div class="page_break"></div>

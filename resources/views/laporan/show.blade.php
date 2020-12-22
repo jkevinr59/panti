@@ -3,7 +3,8 @@
 @section('title', 'Panti Asuhan Anugrah')
 
 @section('content_header')
-    Laporan Anak
+<h3>Laporan Anak: {{$anak->nama}}</h3>
+    
 @stop
 
 @section('content')
