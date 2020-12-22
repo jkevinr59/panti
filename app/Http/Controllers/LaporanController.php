@@ -20,6 +20,7 @@ class LaporanController extends Controller
         $data['model']=LaporanAnak::where('id_anak',$id)->where('jenis_laporan',$type)->get();
         $data['id']=$id;
         $data['type']=$type;
+        $data['anak'] = Anak::find($id);
         return view($this->view.'index',$data);
     }
 

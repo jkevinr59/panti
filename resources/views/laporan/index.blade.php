@@ -5,13 +5,13 @@
 @section('content_header')
     @switch($type)
         @case('akademis')
-        <h1>Laporan Akademis Anak</h1>
+        <h1>Laporan Akademis Anak : {{$anak->nama}}</h1>
             @break
         @case('non_akademis')
-        <h1>Laporan Non Akademis Anak</h1>
+        <h1>Laporan Non Akademis Anak : {{$anak->nama}}</h1>
             @break
         @case('lain_lain')
-        <h1>Laporan Lain-Lain</h1>
+        <h1>Laporan Lain-Lain : {{$anak->nama}}</h1>
             @break
         @default
     @endswitch
