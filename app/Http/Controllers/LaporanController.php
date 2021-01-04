@@ -78,7 +78,7 @@ class LaporanController extends Controller
     public function show($id,Request $request)
     {
         $data['month'] = Carbon::now()->month;
-        $data['monthName'] = $this->getMonth[$data['month']];
+        $data['monthName'] = $this->getMonth()[$data['month']];
         $data['year'] = Carbon::now()->year;
 
         $query = LaporanAnak::where('id_anak',$id)->orderBy('created_at','desc');
@@ -86,7 +86,7 @@ class LaporanController extends Controller
             if($request->month !== 'default'){
                 $query->whereMonth('tanggal_laporan','=',$request->month);
                 $data['month'] = $request->month;
-                $data['monthName'] = $this->getMonth[$data['month']];
+                $data['monthName'] = $this->getMonth()[$data['month']];
             }
         };
         if(isset($request->year)){
@@ -110,7 +110,7 @@ class LaporanController extends Controller
     public function export($id,Request $request)
     {
         $data['month'] = Carbon::now()->month;
-        $data['monthName'] = $this->getMonth[$data['month']];
+        $data['monthName'] = $this->getMonth()[$data['month']];
         $data['year'] = Carbon::now()->year;
 
         $query = LaporanAnak::where('id_anak',$id)->orderBy('created_at','desc');
@@ -118,7 +118,7 @@ class LaporanController extends Controller
             if($request->month !== 'default'){
                 $query->whereMonth('tanggal_laporan','=',$request->month);
                 $data['month'] = $request->month;
-                $data['monthName'] = $this->getMonth[$data['month']];
+                $data['monthName'] = $this->getMonth()[$data['month']];
             }
             
         };

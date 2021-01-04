@@ -31,7 +31,7 @@
 <body>
     <h2 class="center-header">LAPORAN AKADEMIK</h2>
     <h3 class="center-header">Nama: {{$anak->nama}}</h3>
-    {{-- <h3 class="center-header">Tanggal: 10-08-2020 s/d 19/12/2020</h3> --}}
+    <h3 class="center-header">{{$monthName}} - {{$year}}</h3>
 
 
 
@@ -65,7 +65,7 @@
 
     <h2 class="center-header">LAPORAN NON AKADEMIK</h2>
     <h3 class="center-header">Nama: {{$anak->nama}}</h3>
-    {{-- <h3 class="center-header">Tanggal: 10-08-2020 s/d 19/12/2020</h3> --}}
+    <h3 class="center-header">{{$monthName}} - {{$year}}</h3>
 
 
 
@@ -91,7 +91,7 @@
 
     <h2 class="center-header">LAMPIRAN GAMBAR</h2>
     <h3 class="center-header">Nama: {{$anak->nama}}</h3>
-    {{-- <h3 class="center-header">Tanggal: 10-08-2020 s/d 19/12/2020</h3> --}}
+    <h3 class="center-header">{{$monthName}} - {{$year}}</h3>
 
 
 
