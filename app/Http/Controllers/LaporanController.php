@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\LaporanAnak;
 use App\Anak;
+use Carbon\Carbon;
 use App\Traits\UploadTrait;
 use PDF;
 
@@ -15,9 +16,17 @@ class LaporanController extends Controller
     protected $view = 'laporan.';
     protected $route = 'laporan.';
 
-    public function index($id,$type)
+    public function index($id,$type,Request $request)
     {
-        $data['model']=LaporanAnak::where('id_anak',$id)->where('jenis_laporan',$type)->get();
+        $input = $request;
+        $query=LaporanAnak::where('id_anak',$id)->where('jenis_laporan',$type);
+        if($input->month){
+            $query = $query->whereMonth('tanggal_laporan',$input->month);
+        }
+        if($input->year){
+            $query = $query->whereYear('tanggal_laporan',$input->year);
+        }
+        $data['model'] = $query->get();
         $data['id']=$id;
         $data['type']=$type;
         $data['anak'] = Anak::find($id);
@@ -68,22 +77,83 @@ class LaporanController extends Controller
 
     public function show($id,Request $request)
     {
-        $data['laporan_akademis'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','akademis')->orderBy('created_at','desc')->get();
-        $data['laporan_non_akademis'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','non_akademis')->orderBy('created_at','desc')->get();
-        $data['laporan_lain_lain'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','lain_lain')->orderBy('created_at','desc')->get();
+        $data['month'] = Carbon::now()->month;
+        $data['monthName'] = $this->getMonth[$data['month']];
+        $data['year'] = Carbon::now()->year;
+
+        $query = LaporanAnak::where('id_anak',$id)->orderBy('created_at','desc');
+        if(isset($request->month)){
+            if($request->month !== 'default'){
+                $query->whereMonth('tanggal_laporan','=',$request->month);
+                $data['month'] = $request->month;
+                $data['monthName'] = $this->getMonth[$data['month']];
+            }
+        };
+        if(isset($request->year)){
+            if($request->year !== 'default'){
+                $query->whereYear('tanggal_laporan','=',$request->year);
+                $data['year'] = $request->year;
+            }
+        }
+        $queryAkademis = $query;
+        $data['laporan_akademis'] = $queryAkademis->where('jenis_laporan','akademis')->get();
+        $queryNonAkademis = $query;
+        $data['laporan_non_akademis'] = $queryNonAkademis->where('jenis_laporan','non_akademis')->get();
+        $queryLainLain = $query;
+        $data['laporan_lain_lain'] = $queryLainLain->where('jenis_laporan','lain_lain')->get();
         $data['anak'] = Anak::find($id);
+        
         $data['id']=$id;
         return view($this->view.'show',$data);
     }
 
     public function export($id,Request $request)
     {
-        $data['laporan_akademis'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','akademis')->orderBy('created_at','desc')->get();
-        $data['laporan_non_akademis'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','non_akademis')->orderBy('created_at','desc')->get();
-        $data['laporan_lain_lain'] = LaporanAnak::where('id_anak',$id)->where('jenis_laporan','lain_lain')->orderBy('created_at','desc')->get();
+        $data['month'] = Carbon::now()->month;
+        $data['monthName'] = $this->getMonth[$data['month']];
+        $data['year'] = Carbon::now()->year;
+
+        $query = LaporanAnak::where('id_anak',$id)->orderBy('created_at','desc');
+        if(isset($request->month)){
+            if($request->month !== 'default'){
+                $query->whereMonth('tanggal_laporan','=',$request->month);
+                $data['month'] = $request->month;
+                $data['monthName'] = $this->getMonth[$data['month']];
+            }
+            
+        };
+        if(isset($request->year)){
+            if($request->year !== 'default'){
+                $query->whereYear('tanggal_laporan','=',$request->year);
+                $data['year'] = $request->year;
+            }
+        }
+        $queryAkademis = $query;
+        $data['laporan_akademis'] = $queryAkademis->where('jenis_laporan','akademis')->get();
+        $queryNonAkademis = $query;
+        $data['laporan_non_akademis'] = $queryNonAkademis->where('jenis_laporan','non_akademis')->get();
+        $queryLainLain = $query;
+        $data['laporan_lain_lain'] = $queryLainLain->where('jenis_laporan','lain_lain')->get();
         $data['id']=$id;
         $data['anak'] = Anak::find($id);
         $pdf = PDF::loadView('pdf.laporan',$data);
         return $pdf->download('Laporan '.$data['anak']->nama.'.pdf');
+    }
+
+    protected function getMonth()
+    {
+        $monthArray[1] = 'Januari';
+        $monthArray[2] = 'Februari';
+        $monthArray[3] = 'Maret';
+        $monthArray[4] = 'April';
+        $monthArray[5] = 'Mei';
+        $monthArray[6] = 'Juni';
+        $monthArray[7] = 'Juli';
+        $monthArray[8] = 'Agustus';
+        $monthArray[9] = 'September';
+        $monthArray[10] = 'Oktober';
+        $monthArray[11] = 'November';
+        $monthArray[12] = 'Desember';
+        return $monthArray;
     }
 }

@@ -146,7 +146,7 @@
                 <p class="text-center">Email : <a href="#email">emailchrisanmi08@gmail.com</a></p>
                 <p class="text-center">Instagram : <a href="https://www.instagram.com/rpaboyolali/?igshid=1iqe75plw1t0c">@rpa_boyolali</a></p>
                 <p class="text-center">Whatsapp : <a href="http://wa.me/6282135765802">082135765802</a></p>
-                <p class="text-center">Facebook : <a href="#facebook">RPA anugerah boyolali</a></p>
+                <p class="text-center">Facebook : <a href="https://www.facebook.com/rpa.boyolali">RPA anugerah boyolali</a></p>
             </div>
         </div>
         <div class="row" style="height:50px"></div>

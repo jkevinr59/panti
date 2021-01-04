@@ -4,7 +4,7 @@
 
 @section('content_header')
 <h3>Laporan Anak: {{$anak->nama}}</h3>
-<h4>Periode : {{$monthName}}{{$year}}</h4>
+    
 @stop
 
 @section('content')
@@ -13,39 +13,31 @@
     <div class="col-12">
         <div class="col-12 mb-1">
             <select name="month" id="month" class="form form-control">
-                <option value="1" {{($month==1)?'selected':""}}>Januari</option>
-                <option value="2" {{($month==2)?'selected':""}}>Februari</option>
-                <option value="3" {{($month==3)?'selected':""}}>Maret</option>
-                <option value="4" {{($month==4)?'selected':""}}>April</option>
-                <option value="5" {{($month==5)?'selected':""}}>Mei</option>
-                <option value="6" {{($month==6)?'selected':""}}>Juni</option>
-                <option value="7" {{($month==7)?'selected':""}}>Juli</option>
-                <option value="8" {{($month==8)?'selected':""}}>Agustus</option>
-                <option value="9" {{($month==9)?'selected':""}}>September</option>
-                <option value="10" {{($month==10)?'selected':""}}>Oktober</option>
-                <option value="11" {{($month==11)?'selected':""}}>November</option>
-                <option value="12" {{($month==12)?'selected':""}}>Desember</option>
+                <option value="1">Januari</option>
+                <option value="2">Februari</option>
+                <option value="3">Maret</option>
+                <option value="4">April</option>
+                <option value="5">Mei</option>
+                <option value="6">Juni</option>
+                <option value="7">Juli</option>
+                <option value="8">Agustus</option>
+                <option value="9">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
             </select>
         </div>
         <div class="col-12 mb-3">
             <select name="year" id="year" class="form form-control">
                 @for ($i = 2019; $i <= date('Y'); $i++)
-                    <option value="{{$i}}" {{($year==$i)?'selected':""}}>{{$i}}</option>                
+                    <option value="{{$i}}">{{$i}}</option>                
                 @endfor
             </select>
         </div>
 
-        <form action="{{route('laporan.show',$id)}}" method="get" id="filter_form">
-            <input type="hidden" name="month" value="default" id="filter_month">
-            <input type="hidden" name="year" value="default" id="filter_year">
-        </form>
-        <form action="{{route('laporan.export',$id)}}" method="get" id="export_form">
-            <input type="hidden" name="month" value="default" id="export_month">
-            <input type="hidden" name="year" value="default" id="export_year">
-        </form>
-        <button id="export_button" class='btn btn-info float-right mb-3 mr-1'><i class="fa fa-download"></i> Unduh</button>
+        <a class='btn btn-info float-right mb-3 mr-1' href="{{route('laporan.export',$id)}}"><i class="fa fa-download"></i> Unduh</a>
         <a class='btn btn-danger float-right mb-3 mr-1' href="{{route('anak.my_anak')}}"><i class="fa fa-arrow-left"></i> Kembali</a>
-        <button id="filter_button" class='btn btn-primary float-right mb-3 mr-1'><i class="fa fa-search"></i> Cari</button>
+        <a class='btn btn-primary float-right mb-3 mr-1' href="{{route('anak.show',$id)}}"><i class="fa fa-arrow-left"></i> Cari</a>
     </div>
 </div>
 <div class="card card-outline card-primary">
@@ -184,22 +176,6 @@
             $('#dataTables_akademis').DataTable();   
             $('#dataTables_non_akademis').DataTable();   
             $('#dataTables_lain_lain').DataTable();   
-        });
-        $('#filter_button').click(function (e) { 
-            e.preventDefault();
-            let month = $('#month').val();
-            let year = $('#year').val();
-            $('#filter_month').val(month);
-            $('#filter_year').val(year);
-            $('#filter_form').submit();
-        });
-        $('#export_button').click(function (e) { 
-            e.preventDefault();
-            let month = $('#month').val();
-            let year = $('#year').val();
-            $('#export_month').val(month);
-            $('#export_year').val(year);
-            $('#export_form').submit();
         });
     </script>
 @stop
