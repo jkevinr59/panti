@@ -4,7 +4,7 @@
 
 @section('content_header')
 <h3>Laporan Anak: {{$anak->nama}}</h3>
-<h4>Periode : {{$monthName}}{{$year}}</h4>
+<h4>Periode : {{$monthName}} - {{$year}}</h4>
 @stop
 
 @section('content')
