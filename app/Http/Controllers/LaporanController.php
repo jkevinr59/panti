@@ -78,20 +78,19 @@ class LaporanController extends Controller
     public function show($id,Request $request)
     {
         $data['month'] = Carbon::now()->month;
-        $data['monthName'] = $this->getMonth()[$data['month']];
         $data['year'] = Carbon::now()->year;
 
         $query = LaporanAnak::where('id_anak',$id)->orderBy('created_at','desc');
         if(isset($request->month)){
             if($request->month !== 'default'){
-                $query->whereMonth('tanggal_laporan','=',$request->month);
+                $query = $query->whereMonth('tanggal_laporan','=',$request->month);
                 $data['month'] = $request->month;
                 $data['monthName'] = $this->getMonth()[$data['month']];
             }
         };
         if(isset($request->year)){
             if($request->year !== 'default'){
-                $query->whereYear('tanggal_laporan','=',$request->year);
+                $query = $query->whereYear('tanggal_laporan','=',$request->year);
                 $data['year'] = $request->year;
             }
         }
@@ -116,7 +115,7 @@ class LaporanController extends Controller
         $query = LaporanAnak::where('id_anak',$id)->orderBy('created_at','desc');
         if(isset($request->month)){
             if($request->month !== 'default'){
-                $query->whereMonth('tanggal_laporan','=',$request->month);
+                $query = $query->whereMonth('tanggal_laporan','=',$request->month);
                 $data['month'] = $request->month;
                 $data['monthName'] = $this->getMonth()[$data['month']];
             }
@@ -124,7 +123,7 @@ class LaporanController extends Controller
         };
         if(isset($request->year)){
             if($request->year !== 'default'){
-                $query->whereYear('tanggal_laporan','=',$request->year);
+                $query = $query->whereYear('tanggal_laporan','=',$request->year);
                 $data['year'] = $request->year;
             }
         }
