@@ -15,7 +15,7 @@
     </div>
     <div class="row">
     @foreach ($model as $item)
-            <div class="col-5-md">
+            <div class="col-md-6 ">
                 <div class="card card-success mt-1">
                     <div class="card-header">
                         <h3>{{$item->nama}}</h3>
