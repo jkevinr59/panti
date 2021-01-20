@@ -22,33 +22,33 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-8-md">
+                            <div class="col-md-8">
                                 <div class="row">
-                                    <div class="col-6"><h5>Usia</h5></div>
-                                    <div class="col-6"><h5>{{$item->usia}} Tahun</h5></div>
+                                    <div class="col-4"><h5>Usia</h5></div>
+                                    <div class="col-8"><h5>{{$item->usia}} Tahun</h5></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6"><h5>Sekolah</h5></div>
-                                    <div class="col-6"><h5>{{$item->sekolah}}</h5></div>
+                                    <div class="col-4"><h5>Sekolah</h5></div>
+                                    <div class="col-8"><h5>{{$item->sekolah}}</h5></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6"><h5>Asal</h5></div>
-                                    <div class="col-6"><h5>{{$item->asal}}</h5></div>
+                                    <div class="col-4"><h5>Asal</h5></div>
+                                    <div class="col-8"><h5>{{$item->asal}}</h5></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6"><h5>Jenis Kelamin</h5></div>
-                                    <div class="col-6"><h5>{{$item->jenis_kelamin=='L'?'Laki-Laki':'Perempuan'}}</h5></div>
+                                    <div class="col-4"><h5>Jenis Kelamin</h5></div>
+                                    <div class="col-8"><h5>{{$item->jenis_kelamin=='L'?'Laki-Laki':'Perempuan'}}</h5></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6"><h5>NIK</h5></div>
-                                    <div class="col-6"><h5>{{$item->nik}}</h5></div>
+                                    <div class="col-4"><h5>NIK</h5></div>
+                                    <div class="col-8"><h5>{{$item->nik}}</h5></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6"><h5>Tempat Tanggal Lahir</h5></div>
-                                    <div class="col-6"><h5>{{$item->tempat_lahir}} , {{date('d-m-Y',strtotime($item->tanggal_lahir))}}</h5></div>
+                                    <div class="col-4"><h5>Tempat Tanggal Lahir</h5></div>
+                                    <div class="col-8"><h5>{{$item->tempat_lahir}} , {{date('d-m-Y',strtotime($item->tanggal_lahir))}}</h5></div>
                                 </div>
                             </div>
-                            <div class="col-4-md">
+                            <div class="col-md-4">
                                 @if ($item->foto)
                                     <img src="{{$item->foto->path}}" alt="Foto" style="width: 100%">
                                 @endif
