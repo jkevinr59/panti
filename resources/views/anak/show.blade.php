@@ -24,28 +24,28 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="row">
-                                    <div class="col-4"><h5>Usia</h5></div>
-                                    <div class="col-8"><h5>{{$item->usia}} Tahun</h5></div>
+                                    <div class="col-4"><p>Usia</p></div>
+                                    <div class="col-8"><p>{{$item->usia}} Tahun</p></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4"><h5>Sekolah</h5></div>
-                                    <div class="col-8"><h5>{{$item->sekolah}}</h5></div>
+                                    <div class="col-4"><p>Sekolah</p></div>
+                                    <div class="col-8"><p>{{$item->sekolah}}</p></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4"><h5>Asal</h5></div>
-                                    <div class="col-8"><h5>{{$item->asal}}</h5></div>
+                                    <div class="col-4"><p>Asal</p></div>
+                                    <div class="col-8"><p>{{$item->asal}}</p></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4"><h5>Jenis Kelamin</h5></div>
-                                    <div class="col-8"><h5>{{$item->jenis_kelamin=='L'?'Laki-Laki':'Perempuan'}}</h5></div>
+                                    <div class="col-4"><p>Jenis Kelamin</p></div>
+                                    <div class="col-8"><p>{{$item->jenis_kelamin=='L'?'Laki-Laki':'Perempuan'}}</p></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4"><h5>NIK</h5></div>
-                                    <div class="col-8"><h5>{{$item->nik}}</h5></div>
+                                    <div class="col-4"><p>NIK</p></div>
+                                    <div class="col-8"><p>{{$item->nik}}</p></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-4"><h5>Tempat Tanggal Lahir</h5></div>
-                                    <div class="col-8"><h5>{{$item->tempat_lahir}} , {{date('d-m-Y',strtotime($item->tanggal_lahir))}}</h5></div>
+                                    <div class="col-4"><p>Tempat Tanggal Lahir</p></div>
+                                    <div class="col-8"><p>{{$item->tempat_lahir}} , {{date('d-m-Y',strtotime($item->tanggal_lahir))}}</p></div>
                                 </div>
                             </div>
                             <div class="col-md-4">
